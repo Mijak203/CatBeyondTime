@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1r86dlg1af52"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_7jufg"]
+[ext_resource type="Texture2D" uid="uid://b52iiasosahnb" path="res://assets/Mask Dude/Idle (32x32).png" id="2_3d5mh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pqs4"]
+size = Vector2(22, 28)
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_7jufg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3d5mh")
+hframes = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_0pqs4")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, 5)
+target_position = Vector2(20, 0)

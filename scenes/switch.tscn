@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://bntxn8wlqjwkd"]
+
+[ext_resource type="Script" path="res://scripts/switch.gd" id="1_qnvfy"]
+[ext_resource type="Texture2D" uid="uid://b06ufp2n5n6sa" path="res://assets/switch.png" id="2_d72ym"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6x6rl"]
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_vx83c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_eegsf"]
+resource_name = "off"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_1kfne"]
+resource_name = "on"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2fhwx"]
+_data = {
+"RESET": SubResource("Animation_vx83c"),
+"off": SubResource("Animation_eegsf"),
+"on": SubResource("Animation_1kfne")
+}
+
+[node name="Switch" type="Area2D"]
+collision_layer = 32
+collision_mask = 3
+script = ExtResource("1_qnvfy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_d72ym")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6x6rl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2fhwx")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

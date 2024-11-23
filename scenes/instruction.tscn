@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://wt65f5jw1jlq"]
+
+[ext_resource type="Texture2D" uid="uid://dpy4ybnhq2rgc" path="res://assets/Note.png" id="1_h82oh"]
+[ext_resource type="Script" path="res://scripts/instruction.gd" id="1_k7d26"]
+[ext_resource type="FontFile" uid="uid://bq6l3ec3kmaof" path="res://Fonts/Perfect DOS VGA 437 Win.ttf" id="2_v17il"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4a462"]
+font = ExtResource("2_v17il")
+font_size = 14
+font_color = Color(0, 0, 0, 1)
+
+[node name="Instruction" type="Node2D"]
+script = ExtResource("1_k7d26")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -431.0
+offset_top = -235.0
+offset_right = 385.0
+offset_bottom = 241.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(18, -5)
+scale = Vector2(10.26, 5.7125)
+texture = ExtResource("1_h82oh")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -113.0
+offset_top = -73.0
+offset_right = 139.0
+offset_bottom = 114.0
+text = "Sterowanie:
+WSAD - chodzenie
+Spacja - skok
+q - tryb budowania
+enter - potwierdzxenie budowania
+e - interakja
+esc - pauza
+  
+Naciśnij jakikolwiek przycisk,
+żeby kontynuaować"
+label_settings = SubResource("LabelSettings_4a462")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 13)
+zoom = Vector2(1.8, 1.8)

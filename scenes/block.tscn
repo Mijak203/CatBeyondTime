@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpmxy5fawa0cu"]
+
+[ext_resource type="Script" path="res://scripts/block.gd" id="1_sy1r1"]
+[ext_resource type="Texture2D" uid="uid://bwb4wm7a62w2m" path="res://assets/collectables/buildingBlock1.png" id="2_aovd2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5wpc"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10pcc"]
+size = Vector2(14, 14)
+
+[node name="Block" type="CharacterBody2D"]
+position = Vector2(8, 8)
+collision_layer = 8
+script = ExtResource("1_sy1r1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_aovd2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_q5wpc")
+
+[node name="Colider" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colider"]
+shape = SubResource("RectangleShape2D_10pcc")
+
+[connection signal="area_entered" from="Colider" to="." method="_on_colider_area_entered"]
+[connection signal="area_exited" from="Colider" to="." method="_on_colider_area_exited"]
+[connection signal="body_entered" from="Colider" to="." method="_on_colider_body_entered"]
+[connection signal="body_exited" from="Colider" to="." method="_on_colider_body_exited"]

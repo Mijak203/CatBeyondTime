@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://dlak82rnyiexf"]
+
+[ext_resource type="Texture2D" uid="uid://c4ndhr72j78bt" path="res://assets/julko-cut/sprites/portal.png" id="1_53qv1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i80s8"]
+atlas = ExtResource("1_53qv1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwgdx"]
+atlas = ExtResource("1_53qv1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n31ja"]
+atlas = ExtResource("1_53qv1")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtwdk"]
+atlas = ExtResource("1_53qv1")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmlfc"]
+atlas = ExtResource("1_53qv1")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyydt"]
+atlas = ExtResource("1_53qv1")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vlvll"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i80s8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwgdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n31ja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtwdk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmlfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fyydt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="portal" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vlvll")
+autoplay = "default"
+frame_progress = 0.597214

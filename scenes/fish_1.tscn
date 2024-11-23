@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwibkxm2aph2j"]
+
+[ext_resource type="Script" path="res://scripts/fish_1.gd" id="1_bhhit"]
+[ext_resource type="Texture2D" uid="uid://jbjqo0pq25er" path="res://assets/collectables/ryba3(czerwony).png" id="1_o0oqs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0n0m"]
+size = Vector2(12, 9)
+
+[node name="Fish1" type="Area2D"]
+script = ExtResource("1_bhhit")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_o0oqs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_p0n0m")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

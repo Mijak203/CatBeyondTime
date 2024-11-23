@@ -1,0 +1,111 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1jdk3myehlkt"]
+
+[ext_resource type="Script" path="res://scripts/macko/options_menu.gd" id="1_e3bi6"]
+[ext_resource type="Texture2D" uid="uid://bdsnarju2p65d" path="res://assets/tabliczkaEgy.png" id="2_ixek4"]
+[ext_resource type="PackedScene" uid="uid://b8kdp068ekyxq" path="res://scenes/macko/Options_Display_Button.tscn" id="3_820p4"]
+[ext_resource type="PackedScene" uid="uid://d4hft5k74ha6c" path="res://scenes/macko/Window_Mode_Button.tscn" id="4_u1233"]
+[ext_resource type="FontFile" uid="uid://bq6l3ec3kmaof" path="res://Fonts/Perfect DOS VGA 437 Win.ttf" id="5_qxsme"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e3bi6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -492.0
+offset_top = -461.0
+offset_right = 529.0
+offset_bottom = 329.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ixek4")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+offset_left = -286.0
+offset_top = -279.0
+offset_right = 415.0
+offset_bottom = -25.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 128
+
+[node name="Options_Display_Button" parent="ScrollContainer/VBoxContainer" instance=ExtResource("3_820p4")]
+layout_mode = 2
+
+[node name="Window_Mode_Button" parent="ScrollContainer/VBoxContainer" instance=ExtResource("4_u1233")]
+layout_mode = 2
+script = null
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -301.0
+offset_top = -75.0
+offset_right = 331.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_qxsme")
+theme_override_font_sizes/font_size = 38
+text = "Volume
+"
+
+[node name="Volume" type="HSlider" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_qxsme")
+theme_override_font_sizes/font_size = 38
+text = "Mute
+"
+
+[node name="Mute" type="CheckBox" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_qxsme")
+theme_override_font_sizes/font_size = 26
+text = "Back"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(2, -40)
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Volume" to="." method="_on_volume_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Mute" to="." method="_on_mute_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
